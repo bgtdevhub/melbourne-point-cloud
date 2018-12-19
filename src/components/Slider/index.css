@@ -1,0 +1,8 @@
+#sliderDiv {
+  width: 253px;
+  height: 290px;
+  position: absolute;
+  top: 60%;
+  left: 30px;
+  background-color: #acacac;
+}
