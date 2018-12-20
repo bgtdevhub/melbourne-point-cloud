@@ -12,22 +12,15 @@ class SceneView extends Component {
   }
 
   async componentDidMount() {
-    const [SceneView, WebScene, PointCloudLayer] = await esriLoader.loadModules([
+    const [SceneView, WebScene] = await esriLoader.loadModules([
       "esri/views/SceneView",
-      "esri/WebScene",
-      "esri/layers/PointCloudLayer"
+      "esri/WebScene"
     ]);
 
-    const cityOfMelbournePC1 = new PointCloudLayer({
-      url: "https://tiles.arcgis.com/tiles/KGdHCCUjGBpOPPac/arcgis/rest/services/Tile_010_009/SceneServer",
-    });
-
-    const cityOfMelbournePC2 = new PointCloudLayer({
-      url: "https://tiles.arcgis.com/tiles/KGdHCCUjGBpOPPac/arcgis/rest/services/Tile_010_010/SceneServer",
-    });
-
     const scene = new WebScene({
-      layers: [cityOfMelbournePC1, cityOfMelbournePC2]
+      portalItem: {
+        id: "cb95334ab0974b49b7b2fa1837767b17"
+      }
     });
 
     const view = new SceneView({
@@ -39,19 +32,20 @@ class SceneView extends Component {
       },
       camera: {
         position: {
-          "x": 319049.26061052026,
-          "y": 5811015.020178071,
-          "z": 314.5470930327564,
+          "x": 322339.18479371245,
+          "y": 5810783.684337389,
+          "z": 630.5959583771348,
           spatialReference: {
             wkid: 28355
           }
         },
-        heading: 321,
-        tilt: 75
+        heading: 320,
+        tilt: 72.5
       }
     });
 
     await view.when();
+    window.view = view;
 
     this.setState({
       view,
