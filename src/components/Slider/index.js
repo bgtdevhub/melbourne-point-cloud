@@ -56,11 +56,11 @@ class Slider extends Component {
 
     await Promise.all(this.props.layers.items.map(async layer => {
       const statistics = await summaryStatistics({
-          layer,
-          field: "ELEVATION"
-        })
+        layer,
+        field: "ELEVATION"
+      })
 
-        statisticsArray.push(statistics);
+      statisticsArray.push(statistics);
     }));
 
     sliderParams.statistics = {...this.getSummaryStatisticsForAllLayers(statisticsArray)};
