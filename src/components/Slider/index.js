@@ -11,11 +11,11 @@ class Slider extends Component {
     const [
       colorRendererCreator,
       ColorSlider,
-      lang
+      PointCloudStretchRenderer
     ] = await esriLoader.loadModules([
       "esri/renderers/smartMapping/creators/color",
       "esri/widgets/ColorSlider",
-      "esri/core/lang"
+      "esri/renderers/PointCloudStretchRenderer"
     ]);
     
     const elevationLayer = this.props.layers.items[0];
@@ -33,17 +33,29 @@ class Slider extends Component {
     };
 
     const response = await colorRendererCreator.createPCContinuousRenderer(colorParams);
-    elevationLayer.renderer = response.renderer;
 
     sliderParams.statistics = response.statistics;
-    sliderParams.visualVariable = response.renderer;
+
+    sliderParams.visualVariable = {
+      type: "color",
+      field: "ELEVATION",
+      stops: response.renderer.stops
+    }
 
     const colorSlider = new ColorSlider(sliderParams);
 
     colorSlider.on("data-change", function() {
-      const renderer = elevationLayer.renderer.clone();
-      renderer.visualVariable = [lang.clone(colorSlider.visualVariable)];
-      elevationLayer.renderer = renderer;
+      var stretchRenderer = new PointCloudStretchRenderer({
+        field: "ELEVATION",
+        pointSizeAlgorithm: {
+          type: "fixed-size",
+          useRealWorldSymbolSizes: false,
+          size: 2
+        },
+        pointsPerInch: 25,
+        stops: colorSlider.visualVariable.stops
+      });
+      elevationLayer.renderer = stretchRenderer;
     });
   }
 
