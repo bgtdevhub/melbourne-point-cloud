@@ -19,7 +19,7 @@ class SceneView extends Component {
 
     const scene = new WebScene({
       portalItem: {
-        id: "cb95334ab0974b49b7b2fa1837767b17"
+        id: "32bfeb7b3ac945989794ac5970752ea3"
       }
     });
 
