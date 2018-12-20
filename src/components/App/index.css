@@ -5,7 +5,7 @@
 
 .com-logo-div {
   position: absolute;
-  right: 1%;
+  right: 0.6%;
   top: 1.5%;
   width: 160px;
   height: 47px;
@@ -25,7 +25,7 @@
   .com-logo-div {
     position: absolute;
     left: 1%;
-    top: 1.5%;
+    top: 2%;
     width: 90px;
     height: 27px;
   }

@@ -1,7 +1,7 @@
 .viewSwitcherDiv {
   position: absolute;
-  bottom: 30px;
-  left: 20px;
+  bottom: 4%;
+  left: 1%;
   width: 75px;
   height: 75px;
   background-color: white;
@@ -13,8 +13,8 @@
 @media only screen and (max-width: 545px) {
   .viewSwitcherDiv {
     position: absolute;
-    bottom: 5px;
-    left: 10px;
+    bottom: 1%;
+    left: 2.5%;
     width: 55px;
     height: 55px;
     background-color: white;
