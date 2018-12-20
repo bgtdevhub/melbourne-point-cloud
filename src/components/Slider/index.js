@@ -73,7 +73,7 @@ class Slider extends Component {
     const colorSlider = new ColorSlider(sliderParams);
 
     colorSlider.on("data-change", () => {
-      var stretchRenderer = new PointCloudStretchRenderer({
+      const stretchRenderer = new PointCloudStretchRenderer({
         field: "ELEVATION",
         pointSizeAlgorithm: {
           type: "fixed-size",
