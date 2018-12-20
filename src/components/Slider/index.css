@@ -2,7 +2,8 @@
   width: 253px;
   height: 290px;
   position: absolute;
-  top: 60%;
+  top: 40%;
   left: 30px;
   background-color: #acacac;
+  display: none;
 }
