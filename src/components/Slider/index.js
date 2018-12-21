@@ -4,6 +4,12 @@ import './index.css';
 
 class Slider extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.sliderShowHideRef = React.createRef();
+  }
+
   getSummaryStatisticsForAllLayers(summaryStatisticsArray) {
 
     const minArray = [];
@@ -70,29 +76,67 @@ class Slider extends Component {
       stops: response.renderer.stops
     }
 
-    const colorSlider = new ColorSlider(sliderParams);
+    if (this.props.showSlider) {
+      if (!this.colorSlider) {
+        this.colorSlider = new ColorSlider(sliderParams);
 
-    colorSlider.on("data-change", () => {
-      const stretchRenderer = new PointCloudStretchRenderer({
-        field: "ELEVATION",
-        pointSizeAlgorithm: {
-          type: "fixed-size",
-          useRealWorldSymbolSizes: false,
-          size: 2
-        },
-        pointsPerInch: 25,
-        stops: colorSlider.visualVariable.stops
+        this.stretchRenderer = new PointCloudStretchRenderer({
+          field: "ELEVATION",
+          pointSizeAlgorithm: {
+            type: "fixed-size",
+            useRealWorldSymbolSizes: false,
+            size: 2
+          },
+          pointsPerInch: 25,
+          stops: this.colorSlider.visualVariable.stops
+        });
+
+        this.props.layers.items.forEach(layer => {
+          layer.renderer = this.stretchRenderer;
+        })
+
+        this.sliderShowHideRef.current.classList.remove("hide");
+        this.sliderShowHideRef.current.classList.add("show");
+
+        this.colorSlider.on("data-change", () => {
+          this.stretchRenderer = new PointCloudStretchRenderer({
+            field: "ELEVATION",
+            pointSizeAlgorithm: {
+              type: "fixed-size",
+              useRealWorldSymbolSizes: false,
+              size: 2
+            },
+            pointsPerInch: 25,
+            stops: this.colorSlider.visualVariable.stops
+          });
+
+          this.props.layers.items.forEach(layer => {
+            layer.renderer = this.stretchRenderer;
+          })
+        });
+      } else {
+        this.props.layers.items.forEach(layer => {
+          layer.renderer = this.stretchRenderer;
+        });
+
+        this.sliderShowHideRef.current.classList.remove("hide");
+        this.sliderShowHideRef.current.classList.add("show");
+      }
+    } else {
+      this.props.layers.items.forEach(layer => {
+        layer.renderer = null;
       });
 
-      this.props.layers.items.forEach(layer => {
-        layer.renderer = stretchRenderer;
-      })
-    });
+      this.sliderShowHideRef.current.classList.remove("show");
+      this.sliderShowHideRef.current.classList.add("hide");
+    }
   }
 
   render() {
     return (
-      <div id="sliderDiv">
+      <div className="sliderShowHide" ref={this.sliderShowHideRef}>
+        <div id="sliderDiv">
+        </div>
       </div>
     )
   }

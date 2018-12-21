@@ -1,9 +1,21 @@
-#sliderDiv {
+.esri-color-info-slider {
   width: 253px;
   height: 290px;
   position: absolute;
-  top: 40%;
+  bottom: 10vw;
   left: 30px;
   background-color: #acacac;
-  display: none;
+}
+
+.sliderShowHide {
+  transition: all 0.4s ease-in-out;
+}
+
+.show {
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
 }

@@ -10,7 +10,8 @@ class SceneView extends Component {
   state = {
     view: null,
     layers: [],
-    showSwitcher: false
+    showSwitcher: false,
+    showSlider: false
   }
 
   async componentDidMount() {
@@ -34,9 +35,9 @@ class SceneView extends Component {
       },
       camera: {
         position: {
-          "x": 322339.18479371245,
-          "y": 5810783.684337389,
-          "z": 630.5959583771348,
+          "x": 323107.9219921804,
+          "y": 5810906.665562474,
+          "z": 630.5959583771349,
           spatialReference: {
             wkid: 28355
           }
@@ -56,11 +57,17 @@ class SceneView extends Component {
     })
   }
 
+  switchView() {
+    this.setState({
+      showSlider: !this.state.showSlider
+    })
+  }
+
   render() {
     return (
       <div id="viewDiv" className="viewDiv">
-        <Slider layers={this.state.layers} view={this.state.view} />
-        <ViewSwitcher showSwitcher={this.state.showSwitcher} />
+        <Slider layers={this.state.layers} view={this.state.view} showSlider={this.state.showSlider} />
+        <ViewSwitcher showSwitcher={this.state.showSwitcher} switchView={() => this.switchView()} />
       </div>
     )
   }
