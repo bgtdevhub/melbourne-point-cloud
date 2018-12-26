@@ -118,7 +118,6 @@ class Slider extends Component {
         this.props.layers.items.forEach(layer => {
           this.stretchRenderer.pointSizeAlgorithm.size = this.props.pointSize;
           layer.renderer = this.stretchRenderer;
-
         });
 
         this.sliderShowHideRef.current.classList.remove("hide");
