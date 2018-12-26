@@ -21,7 +21,7 @@
   width: 140px;
 }
 
-@media only screen and (max-width: 545px) {
+@media only screen and (max-width: 1024px) {
   .com-logo-div {
     position: absolute;
     left: 1%;
