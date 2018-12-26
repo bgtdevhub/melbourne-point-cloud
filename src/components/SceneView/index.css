@@ -46,6 +46,16 @@
   border-radius: 3px;
 }
 
+.esri-direct-line-measurement-3d__clear-button:hover {
+  background-color: rgb(35, 128, 38);
+  border: solid 1px rgb(35, 128, 38);
+}
+
+.esri-area-measurement-3d__clear-button:hover {
+  background-color: rgb(35, 128, 38);
+  border: solid 1px rgb(35, 128, 38);
+}
+
 @media only screen and (max-width: 1024px) {
   #topbar {
     display: none;
