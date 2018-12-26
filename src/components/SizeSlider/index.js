@@ -16,10 +16,6 @@ class SizeSlider extends Component {
       this.sizeSliderDivRef.current.classList.remove("hide");
       this.sizeSliderDivRef.current.classList.add("show");
 
-      this.props.layers.items.forEach(layer => {
-        layer.renderer = this.rgbRenderer;
-      });
-
       const [
         PointCloudRGBRenderer
       ] = await esriLoader.loadModules([
