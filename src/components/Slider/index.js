@@ -123,9 +123,9 @@ class Slider extends Component {
         this.sliderShowHideRef.current.classList.add("show");
       }
     } else {
-      this.props.layers.items.forEach(layer => {
-        layer.renderer = null;
-      });
+      // this.props.layers.items.forEach(layer => {
+      //   layer.renderer = null;
+      // });
 
       this.sliderShowHideRef.current.classList.remove("show");
       this.sliderShowHideRef.current.classList.add("hide");

@@ -1,14 +1,17 @@
 .esri-color-info-slider {
-  width: 253px;
-  height: 290px;
-  position: absolute;
-  bottom: 10vw;
-  left: 30px;
-  background-color: #acacac;
+  background-color: transparent;
+}
+
+.esri-renderer-slider {
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .93);
 }
 
 .sliderShowHide {
   transition: all 0.4s ease-in-out;
+  position: absolute;
+  bottom: 1vw;
+  right: .5vw;
 }
 
 .show {

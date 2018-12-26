@@ -1,0 +1,57 @@
+.sizeSliderDiv {
+  position: absolute;
+  bottom: 1.5vw;
+  right: 1vw;
+  width: 13vw;
+  height: 50px;
+  background-color: rgba(255, 255, 255, .9);
+  border-radius: 5px;
+  transition: all .5s ease-in-out;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 85%;
+  height: 8px;
+  border-radius: 5px;   
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: rgb(35, 128, 38);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgb(35, 128, 38);
+  cursor: pointer;
+}
+
+.show {
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}

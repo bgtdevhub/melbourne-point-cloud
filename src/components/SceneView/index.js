@@ -3,6 +3,7 @@ import esriLoader from 'esri-loader';
 import './index.css';
 
 import Slider from '../Slider';
+import SizeSlider from '../SizeSlider';
 import ViewSwitcher from '../ViewSwitcher';
 
 class SceneView extends Component {
@@ -11,7 +12,8 @@ class SceneView extends Component {
     view: null,
     layers: [],
     showSwitcher: false,
-    showSlider: false
+    showSlider: false,
+    showSizeSlider: false
   }
 
   async componentDidMount() {
@@ -53,13 +55,15 @@ class SceneView extends Component {
     this.setState({
       view,
       layers: scene.allLayers,
-      showSwitcher: true
+      showSwitcher: true,
+      showSizeSlider: true
     })
   }
 
   switchView() {
     this.setState({
-      showSlider: !this.state.showSlider
+      showSlider: !this.state.showSlider,
+      showSizeSlider: !this.state.showSizeSlider
     })
   }
 
@@ -67,6 +71,7 @@ class SceneView extends Component {
     return (
       <div id="viewDiv" className="viewDiv">
         <Slider layers={this.state.layers} view={this.state.view} showSlider={this.state.showSlider} />
+        <SizeSlider layers={this.state.layers} view={this.state.view} showSizeSlider={this.state.showSizeSlider}/>
         <ViewSwitcher showSwitcher={this.state.showSwitcher} switchView={() => this.switchView()} />
       </div>
     )
