@@ -2,3 +2,52 @@
   width: 100%;
   height: 100vh;
 }
+.esri-ui-top-right {
+  margin-top: 60px;
+}
+
+#topbar {
+  background: #fff;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.action-button {
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid #D3D3D3;
+  color: #6e6e6e;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.action-button:last-child {
+  border-left: none;
+}
+
+.action-button:hover,
+.action-button:focus {
+  background: #0079c1;
+  color: #e4e4e4;
+}
+
+.active {
+  background: #0079c1;
+  color: #e4e4e4;
+}
+
+.esri-direct-line-measurement-3d {
+  border-radius: 3px;
+}
+
+.esri-area-measurement-3d {
+  border-radius: 3px;
+}
+
+@media only screen and (max-width: 1024px) {
+  #topbar {
+    display: none;
+  }
+}

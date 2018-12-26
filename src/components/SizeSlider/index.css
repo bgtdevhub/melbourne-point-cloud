@@ -3,10 +3,11 @@
   bottom: 1.5vw;
   right: 1vw;
   width: 250px;
-  height: 50px;
+  height: 45px;
   background-color: rgba(255, 255, 255, .9);
-  border-radius: 5px;
+  border-radius: 3px;
   transition: all .5s ease-in-out;
+  padding-bottom: 3px;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -18,7 +19,7 @@
 .slider {
   -webkit-appearance: none;
   width: 85%;
-  height: 8px;
+  height: 5px;
   border-radius: 5px;   
   background: #d3d3d3;
   outline: none;
@@ -43,6 +44,7 @@
   border-radius: 50%; 
   background: rgb(35, 128, 38);
   cursor: pointer;
+  box-shadow: 1px 2px;
 }
 
 .slider::-moz-range-thumb {
@@ -51,6 +53,7 @@
   border-radius: 50%;
   background: rgb(35, 128, 38);
   cursor: pointer;
+  box-shadow: 1px 2px;
 }
 
 .show {
