@@ -85,7 +85,7 @@ class Slider extends Component {
           pointSizeAlgorithm: {
             type: "fixed-size",
             useRealWorldSymbolSizes: false,
-            size: 2
+            size: this.props.pointSize
           },
           pointsPerInch: 25,
           stops: this.colorSlider.visualVariable.stops
@@ -104,7 +104,7 @@ class Slider extends Component {
             pointSizeAlgorithm: {
               type: "fixed-size",
               useRealWorldSymbolSizes: false,
-              size: 2
+              size: this.props.pointSize
             },
             pointsPerInch: 25,
             stops: this.colorSlider.visualVariable.stops
@@ -116,7 +116,9 @@ class Slider extends Component {
         });
       } else {
         this.props.layers.items.forEach(layer => {
+          this.stretchRenderer.pointSizeAlgorithm.size = this.props.pointSize;
           layer.renderer = this.stretchRenderer;
+
         });
 
         this.sliderShowHideRef.current.classList.remove("hide");

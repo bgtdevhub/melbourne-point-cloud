@@ -13,7 +13,8 @@ class SceneView extends Component {
     layers: [],
     showSwitcher: false,
     showSlider: false,
-    showSizeSlider: false
+    showSizeSlider: false,
+    pointSize: 2
   }
 
   async componentDidMount() {
@@ -63,15 +64,20 @@ class SceneView extends Component {
   switchView() {
     this.setState({
       showSlider: !this.state.showSlider,
-      showSizeSlider: !this.state.showSizeSlider
+    })
+  }
+
+  setPointSize(event) {
+    this.setState({
+      pointSize: event.target.value
     })
   }
 
   render() {
     return (
       <div id="viewDiv" className="viewDiv">
-        <Slider layers={this.state.layers} view={this.state.view} showSlider={this.state.showSlider} />
-        <SizeSlider layers={this.state.layers} view={this.state.view} showSizeSlider={this.state.showSizeSlider}/>
+        <Slider layers={this.state.layers} view={this.state.view} showSlider={this.state.showSlider} pointSize={this.state.pointSize} />
+        <SizeSlider layers={this.state.layers} view={this.state.view} showSizeSlider={this.state.showSizeSlider} pointSize={this.state.pointSize} setPointSize={this.setPointSize.bind(this)}/>
         <ViewSwitcher showSwitcher={this.state.showSwitcher} switchView={() => this.switchView()} />
       </div>
     )
