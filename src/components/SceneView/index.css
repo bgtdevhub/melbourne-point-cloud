@@ -29,12 +29,12 @@
 
 .action-button:hover,
 .action-button:focus {
-  background: #0079c1;
+  background: rgb(35, 128, 38);
   color: #e4e4e4;
 }
 
 .active {
-  background: #0079c1;
+  background: rgb(35, 128, 38);;
   color: #e4e4e4;
 }
 
