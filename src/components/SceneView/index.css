@@ -7,9 +7,8 @@
 }
 
 #topbar {
-  background: #fff;
-  padding: 10px;
-  border-radius: 3px;
+  background: none;
+  box-shadow: none;
 }
 
 .action-button {
@@ -17,10 +16,11 @@
   background-color: transparent;
   border: 1px solid #D3D3D3;
   color: #6e6e6e;
-  height: 32px;
-  width: 32px;
+  height: 38px;
+  width: 38px;
   text-align: center;
   cursor: pointer;
+  background: #ffffff;
 }
 
 .action-button:last-child {
