@@ -17,7 +17,7 @@ class ViewSwitcher extends Component {
   componentDidUpdate() {
     const switcherImage = this.state.switchToColor ?  "url('img/color.png')" : "url('img/point.png')";
     const switcherText = this.state.switchToColor ? "<p class='smaller-text'>Switch to</p> Elevation <p class='smaller-text'>View</p>"
-            : "<p class='smaller-text'>Switch to</p> RGB <p class='smaller-text'>View</p>";
+            : "<p class='smaller-text'>Switch to</p> True Color <p class='smaller-text'>View</p>";
 
     this.viewSwitcherDivRef.current.style.backgroundImage = switcherImage;
     this.switcherTextRef.current.innerHTML = switcherText;
