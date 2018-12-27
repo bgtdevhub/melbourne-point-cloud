@@ -29,17 +29,31 @@ class Slider extends Component {
     }
   }
 
+  getUnifiedHistogram(histogramArray) {
+    const finalHistogram = {...histogramArray[0]};
+
+    for (let i=1; i < histogramArray.length; i++) {
+      finalHistogram.bins.forEach((bin, index) => {
+        bin.count += histogramArray[i].bins[index].count
+      })
+    }
+
+    return finalHistogram;
+  }
+
   async componentDidUpdate() {
     const [
       colorRendererCreator,
       ColorSlider,
       PointCloudStretchRenderer,
-      summaryStatistics
+      summaryStatistics,
+      histogram
     ] = await esriLoader.loadModules([
       "esri/renderers/smartMapping/creators/color",
       "esri/widgets/ColorSlider",
       "esri/renderers/PointCloudStretchRenderer",
-      "esri/renderers/smartMapping/statistics/summaryStatistics"
+      "esri/renderers/smartMapping/statistics/summaryStatistics",
+      "esri/renderers/smartMapping/statistics/histogram"
     ]);
     
     const elevationLayer = this.props.layers.items[0];
@@ -50,7 +64,7 @@ class Slider extends Component {
       theme: "high-to-low"
     };
 
-    const sliderParams = {
+    this.sliderParams = {
       numHandles: 2,
       syncedHandles: false,
       container: "sliderDiv"
@@ -69,16 +83,33 @@ class Slider extends Component {
       statisticsArray.push(statistics);
     }));
 
-    sliderParams.statistics = {...this.getSummaryStatisticsForAllLayers(statisticsArray)};
-    sliderParams.visualVariable = {
+    this.sliderParams.statistics = {...this.getSummaryStatisticsForAllLayers(statisticsArray)};
+    this.sliderParams.visualVariable = {
       type: "color",
       field: "ELEVATION",
       stops: response.renderer.stops
     }
 
+    const histogramArray = [];
+
+    await Promise.all(this.props.layers.items.map(async layer => {
+      const histogramParams = {
+        layer: layer,
+        field: "ELEVATION",
+        numBins: 30,
+        minValue: this.sliderParams.statistics.min,
+        maxValue: this.sliderParams.statistics.max
+      };
+
+      const histo = await histogram(histogramParams);
+      histogramArray.push(histo);
+    }));
+
+    this.sliderParams.histogram = this.getUnifiedHistogram(histogramArray);
+
     if (this.props.showSlider) {
       if (!this.colorSlider) {
-        this.colorSlider = new ColorSlider(sliderParams);
+        this.colorSlider = new ColorSlider(this.sliderParams);
 
         this.stretchRenderer = new PointCloudStretchRenderer({
           field: "ELEVATION",

@@ -24,6 +24,13 @@
   pointer-events: none;
 }
 
+.dijitTooltipContainer {
+  background-color: #ffffff;
+  border: solid 1px #c5c5c5;
+  padding: 4px;
+  border-radius: 2px;
+}
+
 @media only screen and (max-width: 1280px) {
   .sliderShowHide {
     right: .3vw;
@@ -35,4 +42,4 @@
   .sliderShowHide {
     display: none;
   }
-}
+};
