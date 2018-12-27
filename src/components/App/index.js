@@ -8,8 +8,8 @@ class App extends Component {
       <div className="App">
         <div className="com-logo-div">
           <a href="https://data.melbourne.vic.gov.au/Property-Planning/City-of-Melbourne-3D-Point-Cloud-2018/2dqj-9ydd"
-           target="_blank"
-           rel="noopener noreferrer"><img src="img/com-logo.png"
+            target="_blank"
+            rel="noopener noreferrer"><img src="img/com-logo.png"
             alt="City of Melbourne logo"
             className="com-logo"
           ></img>
