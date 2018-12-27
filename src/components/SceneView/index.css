@@ -40,10 +40,12 @@
 
 .esri-direct-line-measurement-3d {
   border-radius: 3px;
+  z-index: 10;
 }
 
 .esri-area-measurement-3d {
   border-radius: 3px;
+  z-index: 10;
 }
 
 .esri-direct-line-measurement-3d__clear-button:hover {
