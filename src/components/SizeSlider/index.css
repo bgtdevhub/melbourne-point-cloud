@@ -10,6 +10,37 @@
   padding-bottom: 3px;
 }
 
+.sizeSliderDiv .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: rgba(255, 255, 255, .9);
+  color: rgb(49, 49, 49);
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size: 0.7rem;
+
+  position: absolute;
+  top: 25%;
+  left: -35%;
+  z-index: 1;
+}
+
+.sizeSliderDiv:hover .tooltiptext {
+  visibility: visible;
+}
+
+.sizeSliderDiv .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent rgba(255, 255, 255, .9);
+}
+
 @media only screen and (max-width: 1024px) {
   .sizeSliderDiv {
     display: none;

@@ -41,6 +41,7 @@ class SizeSlider extends Component {
   render() {
     return (
       <div className="sizeSliderDiv hide" ref={this.sizeSliderDivRef}>
+        <span className="tooltiptext">Point Size: <b>{this.props.pointSize}</b></span>
         <div className="slidecontainer">
           <input type="range" min="1" max="10" defaultValue="2" className="slider" id="myRange" onChange={(e) => this.props.setPointSize(e)}></input>
         </div>
