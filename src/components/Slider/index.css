@@ -25,10 +25,31 @@
 }
 
 .dijitTooltipContainer {
-  background-color: #ffffff;
-  border: solid 1px #c5c5c5;
+  background-color: #006946;
+  border: solid 1px #006946;
   padding: 4px;
   border-radius: 2px;
+  color: #ffffff;
+}
+
+.dijitTooltipLeft .dijitTooltipContainer::before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 99%;
+  margin-top: -5px;
+  border: solid 5px;
+  border-color: transparent transparent transparent #006946;
+}
+
+.dijitTooltipRight .dijitTooltipContainer::before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 99%;
+  margin-top: -5px;
+  border: solid 5px;
+  border-color: transparent #006946 transparent transparent;
 }
 
 @media only screen and (max-width: 1280px) {
